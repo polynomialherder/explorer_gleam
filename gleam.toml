@@ -5,7 +5,7 @@ description = "Bindings for the Explorer library, bringing series and dataframes
 # Fill out these fields if you intend to generate HTML documentation or publish
 # your project to the Hex package manager.
 #
-# licences = ["MIT"]
+# licences = ["Apache-2.0"]
 # repository = { type = "github", user = "polynomialherder", repo = "explorer_gleam" }
 # links = [{ title = "Website", href = "https://www.github.com/polynomialherder/explorer_gleam" }]
 
