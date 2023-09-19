@@ -22,9 +22,6 @@ pub type Error {
   OpNotImplementedForDatatype
 }
 
-@external(erlang, "Elixir.GleamExplorer.Series", "from_list")
-fn from_list_(list: List(t)) -> Map(Dynamic, Dynamic)
-
 pub fn from_list(list: List(t)) -> Series(t) {
   let series = from_list_(list)
   series
@@ -69,6 +66,9 @@ pub fn sort(series: Series(t)) -> Series(t) {
   |> to_gleam_series
 }
 
+@external(erlang, "Elixir.GleamExplorer.Series", "from_list")
+fn from_list_(list: List(t)) -> Map(Dynamic, Dynamic)
+
 @external(erlang, "Elixir.GleamExplorer.Series", "argmax")
 pub fn argmax_(series: Map(Dynamic, Dynamic)) -> t
 
@@ -86,13 +86,3 @@ pub fn to_gleam_series(series: Map(Dynamic, Dynamic)) -> Series(t)
 
 @external(erlang, "Elixir.GleamExplorer.Series", "to_elixir_struct")
 pub fn to_elixir_struct(series: Series(t)) -> Map(Dynamic, Dynamic)
-
-pub fn main() {
-  let series = from_list([3, 2, 3])
-
-  io.debug(series)
-  io.debug(
-    series
-    |> sort,
-  )
-}
