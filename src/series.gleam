@@ -18,6 +18,7 @@ pub type Series(t) {
 pub type Error {
   BadIndex
   InvalidData
+  OpNotImplementedForDatatype
 }
 
 @external(erlang, "Elixir.GleamExplorer.Series", "from_list")
@@ -35,7 +36,7 @@ pub fn at(series: Series(t), index: Int) -> Result(t, Error) {
   |> at_(index)
 }
 
-pub fn sum(series: Series(t)) -> t {
+pub fn sum(series: Series(t)) -> Result(t, Error) {
   series
   |> to_elixir_struct
   |> sum_
@@ -49,7 +50,7 @@ pub fn sort(series: Series(t)) -> Series(t) {
 }
 
 @external(erlang, "Elixir.GleamExplorer.Series", "sum")
-pub fn sum_(series: Map(Dynamic, Dynamic)) -> t
+pub fn sum_(series: Map(Dynamic, Dynamic)) -> Result(t, Error)
 
 @external(erlang, "Elixir.GleamExplorer.Series", "sort")
 pub fn sort_(series: Map(Dynamic, Dynamic)) -> t
