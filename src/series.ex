@@ -20,11 +20,7 @@ defmodule GleamExplorer.Series do
    end
 
   def sum(series) do
-    try do
-      {:ok, Explorer.Series.sum(series)}
-    rescue
-      Elixir.ArgumentError -> {:error, :op_not_implemented_for_datatype}
-    end
+    Explorer.Series.sum(series)
   end
 
   def at(series, index) do
@@ -34,6 +30,10 @@ defmodule GleamExplorer.Series do
     rescue
       Elixir.RuntimeError -> {:error, :bad_index}
     end
+  end
+
+  def argmax(series) do
+    Explorer.Series.argmax(series)
   end
 
   def sort(series) do
